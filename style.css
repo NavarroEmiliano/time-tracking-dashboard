@@ -257,7 +257,7 @@ picture {
         padding-inline-start: 0.5rem;
     }
 
-    .time-box__image-container>img {
+    .time-box__image-container--exercise>img {
         inset-block-start: 0px;
     }
 
