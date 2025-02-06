@@ -1,5 +1,5 @@
 const mainContainer = document.querySelector(".main-container");
-const buttonsContainer = document.querySelector('.user-box__actions');
+const buttonsContainer = document.querySelector(".user-box__actions");
 let currentData = [];
 
 fetch("/data.json")
@@ -8,15 +8,15 @@ fetch("/data.json")
     return response.json();
   })
   .then((data) => {
-    currentData = data
-    updateDOM('daily')
+    currentData = data;
+    updateDOM("daily");
   })
   .catch((error) => console.error(error));
 
 const updateDOM = (timeframe) => {
-  clearMainContainer()
+  clearMainContainer();
   const fragment = document.createDocumentFragment();
-  
+
   currentData.forEach((item) => {
     const newItem = createItemElement(item, timeframe);
     fragment.appendChild(newItem);
@@ -25,21 +25,27 @@ const updateDOM = (timeframe) => {
   mainContainer.appendChild(fragment);
 };
 
-
 const clearMainContainer = () => {
-  document.querySelectorAll(".main-container > *:not(.user-box)").forEach(element => element.remove());
+  document
+    .querySelectorAll(".main-container > *:not(.user-box)")
+    .forEach((element) => element.remove());
 };
-
 
 const createItemElement = (item, timeframe) => {
   const itemTitle = item.title.toLowerCase().split(" ").join("-");
   const { current, previous } = item.timeframes[timeframe];
 
+  const period =
+    timeframe === "daily" ? "Day" : timeframe === "weekly" ? "Week" : "Month";
+
   const timeBox = document.createElement("div");
   timeBox.classList.add("time-box");
 
   const imageContainer = document.createElement("div");
-  imageContainer.classList.add("time-box__image-container", `time-box__image-container--${itemTitle}`);
+  imageContainer.classList.add(
+    "time-box__image-container",
+    `time-box__image-container--${itemTitle}`
+  );
   const image = document.createElement("img");
   image.src = `/images/icon-${itemTitle}.svg`;
   image.alt = `${item.title} icon`;
@@ -59,7 +65,7 @@ const createItemElement = (item, timeframe) => {
   hoursAndPrev.classList.add("time-box__hours-and-prev");
   hoursAndPrev.innerHTML = `
     <p class="time-box__hours">${current}hrs</p>
-    <p class="time-box__prev">Previous - ${previous}hrs</p>
+    <p class="time-box__prev">Last ${period} - ${previous}hrs</p>
   `;
 
   timeInfo.appendChild(titleAndDots);
@@ -73,13 +79,13 @@ const createItemElement = (item, timeframe) => {
 buttonsContainer.addEventListener("click", (e) => {
   if (e.target.matches(".user-box__button")) {
     const selectedTimeframe = e.target.textContent.toLowerCase();
-    updateDOM(selectedTimeframe); 
+    updateDOM(selectedTimeframe);
     highlightActiveButton(e.target);
   }
 });
 
 const highlightActiveButton = (activeButton) => {
-  document.querySelectorAll(".user-box__button").forEach(button => {
+  document.querySelectorAll(".user-box__button").forEach((button) => {
     button.classList.remove("active");
   });
   activeButton.classList.add("active");
