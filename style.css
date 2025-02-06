@@ -94,6 +94,7 @@ picture {
     border: none;
     background-color: transparent;
     color: var(--desaturated-blue);
+    transition: all 100ms ease-out;
 }
 
 .user-box__button:hover {
@@ -159,11 +160,13 @@ picture {
     padding-block: 28px;
     border-radius: 15px;
     inset-block-start: 40px;
+    transition: all 100ms ease-out;
 }
 
 .time-box__time:hover {
     cursor: pointer;
     background-color: var(--blue);
+    transform: scale(1.025);
 }
 
 .time-box__title-and-dots {
@@ -248,6 +251,10 @@ picture {
         gap: 21px;
         justify-content: start;
         justify-items: start;
+    }
+
+    .user-box__button:hover {
+        padding-inline-start: 0.5rem;
     }
 
     .time-box__time {
