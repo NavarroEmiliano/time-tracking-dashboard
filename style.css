@@ -257,6 +257,10 @@ picture {
         padding-inline-start: 0.5rem;
     }
 
+    .time-box__image-container>img {
+        inset-block-start: 0px;
+    }
+
     .time-box__time {
         padding-inline: 30px;
         padding-block-start: 29px;
