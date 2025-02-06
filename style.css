@@ -40,6 +40,7 @@ picture {
     max-inline-size: 327px;
     inline-size: 100%;
     color: var(--white);
+    gap: 24px;
 }
 
 .user-box {
@@ -102,17 +103,17 @@ picture {
 
 .time-box {
     position: relative;
+    min-block-size: 160px;
 }
 
 .time-box__image-container {
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    inline-size: 100%;
     block-size: 100px;
 }
 
-.time-box__image-container>img { 
+.time-box__image-container>img {
     position: absolute;
     inline-size: 78px;
     inset-inline-end: 17px;
@@ -121,6 +122,26 @@ picture {
 
 .time-box__image-container--work {
     background-color: var(--light-red-work);
+}
+
+.time-box__image-container--play {
+    background-color: var(--soft-blue-play);
+}
+
+.time-box__image-container--study {
+    background-color: var(--light-red-study);
+}
+
+.time-box__image-container--exercise {
+    background-color: var(--lime-green-exercise);
+}
+
+.time-box__image-container--social {
+    background-color: var(--violet-social);
+}
+
+.time-box__image-container--self-care {
+    background-color: var(--soft-orange-self-care);
 }
 
 .time-box__time {
