@@ -98,9 +98,8 @@ picture {
 
 .user-box__button:hover {
     color: white;
+    cursor: pointer;
 }
-
-
 
 .user-box__button.active {
     color: white;
@@ -162,6 +161,11 @@ picture {
     inset-block-start: 40px;
 }
 
+.time-box__time:hover {
+    cursor: pointer;
+    background-color: var(--blue);
+}
+
 .time-box__title-and-dots {
     display: flex;
     block-size: 22px;
@@ -176,6 +180,13 @@ picture {
 .time-box__dots {
     inline-size: 21px;
     object-fit: contain;
+    transition: all 100ms ease-out;
+
+}
+
+.time-box__dots:hover {
+    transform: scale(1.2);
+    filter: brightness(100);
 }
 
 .time-box__hours-and-prev {
@@ -219,6 +230,7 @@ picture {
     .user-box__image {
         inline-size: 78px;
     }
+
     .user-box__details {
         gap: 3px;
     }
