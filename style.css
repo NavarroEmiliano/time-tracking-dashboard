@@ -97,7 +97,9 @@ picture {
     color: white;
 }
 
-.btn-active {
+
+
+.user-box__button.active {
     color: white;
 }
 

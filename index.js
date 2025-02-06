@@ -1,4 +1,6 @@
 const mainContainer = document.querySelector(".main-container");
+const buttonsContainer = document.querySelector('.user-box__actions');
+let currentData = [];
 
 fetch("/data.json")
   .then((response) => {
@@ -6,23 +8,32 @@ fetch("/data.json")
     return response.json();
   })
   .then((data) => {
-    populateDOM(data);
+    currentData = data
+    updateDOM('daily')
   })
   .catch((error) => console.error(error));
 
-const populateDOM = (data) => {
+const updateDOM = (timeframe) => {
+  clearMainContainer()
   const fragment = document.createDocumentFragment();
   
-  data.forEach((item) => {
-    const newItem = createItemElement(item);
+  currentData.forEach((item) => {
+    const newItem = createItemElement(item, timeframe);
     fragment.appendChild(newItem);
   });
 
   mainContainer.appendChild(fragment);
 };
 
-const createItemElement = (item) => {
+
+const clearMainContainer = () => {
+  document.querySelectorAll(".main-container > *:not(.user-box)").forEach(element => element.remove());
+};
+
+
+const createItemElement = (item, timeframe) => {
   const itemTitle = item.title.toLowerCase().split(" ").join("-");
+  const { current, previous } = item.timeframes[timeframe];
 
   const timeBox = document.createElement("div");
   timeBox.classList.add("time-box");
@@ -47,8 +58,8 @@ const createItemElement = (item) => {
   const hoursAndPrev = document.createElement("div");
   hoursAndPrev.classList.add("time-box__hours-and-prev");
   hoursAndPrev.innerHTML = `
-    <p class="time-box__hours">${item.timeframes.daily.current}hrs</p>
-    <p class="time-box__prev">Previous - ${item.timeframes.daily.previous}hrs</p>
+    <p class="time-box__hours">${current}hrs</p>
+    <p class="time-box__prev">Previous - ${previous}hrs</p>
   `;
 
   timeInfo.appendChild(titleAndDots);
@@ -59,8 +70,17 @@ const createItemElement = (item) => {
   return timeBox;
 };
 
-document.addEventListener("click", (event) => {
-  if (event.target.matches(".user-box__button")) {
-    console.log(`Se hizo clic en: ${event.target.textContent}`);
+buttonsContainer.addEventListener("click", (e) => {
+  if (e.target.matches(".user-box__button")) {
+    const selectedTimeframe = e.target.textContent.toLowerCase();
+    updateDOM(selectedTimeframe); 
+    highlightActiveButton(e.target);
   }
 });
+
+const highlightActiveButton = (activeButton) => {
+  document.querySelectorAll(".user-box__button").forEach(button => {
+    button.classList.remove("active");
+  });
+  activeButton.classList.add("active");
+};
