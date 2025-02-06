@@ -27,6 +27,7 @@ body {
     background-color: var(--very-dark-blue);
     display: grid;
     place-items: center;
+    padding-block: 5rem;
 }
 
 img,
