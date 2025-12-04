@@ -1,40 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="/style.css">
-  <script defer src="/index.js"></script>
-  <title>Time tracking dashboard</title>
-</head>
-
-<body>
-
-  <main class="main-container">
-
-    <div class="user-box">
-      <div class="user-box__info">
-        <img class="user-box__image" src="/images/image-jeremy.png" alt="Image of Jeremy Robson">
-        <div class="user-box__details">
-          <p class="user-box__report">Report for</p>
-          <p class="user-box__name">Jeremy Robson</p>
-        </div>
-      </div>
-
-      <div class="user-box__actions">
-        <button class="user-box__button user-box__button--daily active">Daily</button>
-        <button class="user-box__button user-box__button--weekly">Weekly</button>
-        <button class="user-box__button user-box__button--monthly">Monthly</button>
-      </div>
-    </div>
-
-  </main>
-
-
-
-</body>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/index.js"></script>
+    <title>Time tracking dashboard</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
