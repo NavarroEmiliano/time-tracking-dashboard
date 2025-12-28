@@ -1,28 +1,52 @@
-import './App.css'
+import { useState } from "react";
+import jeremyImage from "./assets/images/image-jeremy.png";
 
 function App() {
+  const [selected, setSelected] = useState<string>("Daily");
+
+  const handleButtonClick = (value: string) => {
+    setSelected(value);
+  };
 
   return (
-    <main className="main-container">
-
-    <div className="user-box">
-      <div className="user-box__info">
-{/*         <img className="user-box__image" src="/images/image-jeremy.png" alt="Image of Jeremy Robson" >*/}
-        <div className="user-box__details">
-          <p className="user-box__report">Report for</p>
-          <p className="user-box__name">Jeremy Robson</p>
+    <div className="min-h-screen flex justify-center items-center bg-[#0E1323]">
+      <div>
+        <div className="h-[518px] w-[255px] rounded-[15px] bg-[#1C204B]">
+          <div className="h-[354px] rounded-[15px] pt-[37px] pb-[80px] bg-[#5747EA] pl-[32px] ">
+            <div className="h-20 w-20 mb-[43px] border-3 border-white rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+              <img src={jeremyImage} alt="jeremy" height={200} width={200} />
+            </div>
+            <div className="h-[116px] w-[139px]">
+              <p className="text-[15px] mb-[3px] text-[#BBC0FF] ">Report for</p>
+              <p className="text-[40px] leading-[47px] font-light text-white">
+                Jeremy Robson
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col items-start gap-4 ml-[32px] mt-[26px] text-[18px] text-[#7078C9]  bg-[#1C204B] select-none">
+            <button
+              className={`${selected === "Daily" ? "text-white" : ""} cursor-pointer`}
+              onClick={() => handleButtonClick("Daily")}
+            >
+              Daily
+            </button>
+            <button
+              className={`${selected === "Weekly" ? "text-white" : ""} cursor-pointer`}
+              onClick={() => handleButtonClick("Weekly")}
+            >
+              Weekly
+            </button>
+            <button
+              className={`${selected === "Monthly" ? "text-white" : ""} cursor-pointer`}
+              onClick={() => handleButtonClick("Monthly")}
+            >
+              Monthly
+            </button>
+          </div>
         </div>
       </div>
-
-      <div className="user-box__actions">
-        <button className="user-box__button user-box__button--daily active">Daily</button>
-        <button className="user-box__button user-box__button--weekly">Weekly</button>
-        <button className="user-box__button user-box__button--monthly">Monthly</button>
-      </div>
     </div>
-
-  </main>
-  )
+  );
 }
 
-export default App
+export default App;
