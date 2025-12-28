@@ -1,10 +1,12 @@
 import { useState } from "react";
 import jeremyImage from "./assets/images/image-jeremy.png";
 
-function App() {
-  const [selected, setSelected] = useState<string>("Daily");
+type Timeframe = "Daily" | "Weekly" | "Monthly";
 
-  const handleButtonClick = (value: string) => {
+function App() {
+  const [selected, setSelected] = useState<Timeframe>("Daily");
+
+  const handleButtonClick = (value: Timeframe) => {
     setSelected(value);
   };
 
@@ -17,7 +19,7 @@ function App() {
               <img src={jeremyImage} alt="jeremy" height={200} width={200} />
             </div>
             <div className="h-[116px] w-[139px]">
-              <p className="text-[15px] mb-[3px] text-[#BBC0FF] ">Report for</p>
+              <p className="text-[15px] mb-[3px] text-[#BBC0FF]">Report for</p>
               <p className="text-[40px] leading-[47px] font-light text-white">
                 Jeremy Robson
               </p>
